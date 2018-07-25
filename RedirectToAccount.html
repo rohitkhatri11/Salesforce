@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			 $(document).ready(function(){
+				var script=document.createElement('script');
+				var domain=window.location.hostname;
+				var url=domain+'support/console/43.0/integration.js'
+				alert(url);
+				script.src=url;
+				script.type='text/javascript';
+				$("head").append(script);
+			});
+			/*function addConsoleScript() {
+			  var ele = document.createElement( 'script' );
+			  var domain=window.location.hostname;
+			  var src=domain+'support/console/43.0/integration.js'
+			  ele.setAttribute( 'src', src );
+			  document.body.appendChild( ele );
+			}*/
+			function redirectToAccount(){
+				sforce.console.getEnclosingPrimaryTabId(closeSubtab);
+			}
+			var closeSubtab = function closeSubtab(result) {
+				var tabId = result.id; 
+				var recordId='0017F000006Qj15QAC';
+				console.log('1');
+				sforce.console.closeTab(tabId);
+				sforce.console.openPrimaryTab(null, '/'+recordId, true, 'Customer 360°', openSuccess, 'salesforceTab');
+			}
+			var openSuccess = function openSuccess(result) {
+				if (result.success == true) {
+					//alert('Primary tab successfully opened');
+				} else {
+					//alert('Primary tab cannot be opened');
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<button type="button" onclick="redirectToAccount()">Take me there</button>
+	</body>
+</html>
