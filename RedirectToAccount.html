@@ -5,7 +5,8 @@
 			 $(document).ready(function(){
 				var script=document.createElement('script');
 				var domain = document.referrer;
-				var url=domain+'support/console/43.0/integration.js'
+				alert(domain);
+				 var url=domain+'support/console/43.0/integration.js'
 				script.src=url;
 				script.type='text/javascript';
 				$("head").append(script);
